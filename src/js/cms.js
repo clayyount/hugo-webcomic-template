@@ -3,6 +3,7 @@ import CMS from "netlify-cms";
 
 import HomePreview from "./cms-preview-templates/home";
 import PostPreview from "./cms-preview-templates/post";
+import GalleryPreview from "./cms-preview-templates/gallery";
 
 
 
@@ -22,5 +23,8 @@ CMS.registerPreviewStyle("/scss/main.min.css");
 CMS.registerPreviewStyle("https://fonts.googleapis.com/css?family=Roboto|Teko");
 CMS.registerPreviewTemplate("home", HomePreview);
 CMS.registerPreviewTemplate("blog", PostPreview);
-CMS.registerPreviewTemplate("comic", PostPreview);
+CMS.registerPreviewTemplate("gallery", GalleryPreview);
+CMS.registerPreviewTemplate("hamlets-danish-comic", PostPreview);
+CMS.registerPreviewTemplate("ghostcat-comics-archive", PostPreview);
+CMS.registerPreviewTemplate("raecomic", PostPreview);
 CMS.registerWidget("color", ColorControl);
