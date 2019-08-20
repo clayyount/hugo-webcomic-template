@@ -1,0 +1,6 @@
+<section class="blog-list">
+	{{ range (.Paginator 10).Pages.ByPublishDate.Reverse }}
+		{{ .Render "li" }}
+	{{ end }}
+</section>
+{{ partial "pagination" . }}

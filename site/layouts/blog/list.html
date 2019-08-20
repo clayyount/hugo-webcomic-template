@@ -1,0 +1,11 @@
+{{ define "main" }}
+
+<main>
+	
+	<div class="content">
+		<h2 class="latest-title">Blog Posts</h2>
+	{{ partial "blog-list" . }}
+	</div>
+</main>
+{{ partial "blog-sidebar" . }}
+{{ end }}

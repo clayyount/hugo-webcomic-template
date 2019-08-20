@@ -1,0 +1,28 @@
+<nav id="site-nav" class="site-nav">
+
+	<!-- Logo -->
+	<a href="/">
+		<img src="/img/cy-logo-transparent.png" class="logo">
+	</a>
+	<div class="social-media">
+		<ul>
+			{{ partial "social-icon" (dict "link" "#" "service" "instagram" "icon" "fab fa-instagram") }}
+			{{ partial "social-icon" (dict "link" "#" "service" "twitter" "icon" "fab fa-twitter") }}
+			{{ partial "social-icon" (dict "link" "#" "service" "facebook" "icon" "fab fa-facebook-f") }}
+		</ul>
+	</div>
+
+	<!-- Primary Nav -->
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/comic">Archive</a></li>
+		<li><a href="/blog">Blog</a></li>
+		<li><a href="/about">About</a></li>
+		<li><a href="/contact">Contact</a></li>
+		
+	</ul>
+	<span class="mobile-menu-btn" id="mobile-menu-btn">
+		<span class="menu-icon"></span>
+	</span>
+
+</nav>

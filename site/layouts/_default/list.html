@@ -1,0 +1,14 @@
+{{ define "main" }}
+<main>
+<div>
+  <ul>
+      {{ range (.Paginator 4).Pages.ByPublishDate.Reverse }}
+          <div>
+            {{ .Render "li"}}
+          </div>
+      {{ end }}
+  </ul>
+  {{ partial "pagination" . }}
+</div>
+</main>
+{{end}}

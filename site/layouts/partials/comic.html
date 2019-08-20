@@ -1,0 +1,75 @@
+<div class="comic-holder">
+      <div class="comic-title">
+        <h1>{{.Title}}</h1>
+      </div>
+      <div class="comic">
+        {{ if .Params.image }}<img src="{{ .Params.image }}" alt="{{ .Title }}" />{{ end }}
+      </div>
+
+      <nav class="comic-nav">
+          {{if .PrevInSection}}
+          <a href="{{ range last 1 .CurrentSection.Pages }}{{ .RelPermalink }}{{ end }}">First</a>
+          <a href="{{.PrevInSection.RelPermalink}}">Prev<span class="hidden-sm">ious</span></a>
+          {{ else }}
+          <a class="disabled">First</a>
+          <a class="disabled">Prev<span class="hidden-sm">ious</span></a>
+          {{ end }}
+          <a href="#" id="random-btn">Rand<span class="hidden-sm">om</span></a>
+          {{ if or (eq .Dir "ghostcat-comics-archive/") (eq .Dir "ghostcat-comics/") }}
+          <a href="http://instagram.com/ghostcat" target="_blank"><span href="http://instagram.com/ghostcat" target="_blank" class="" style="text-align:center;color:white;width:30px;height:30px;line-height:36px;font-size:18px;display:inline-block;background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);border-radius:3px;"><i class="fab fa-lg fa-instagram"></i></span></a>
+          {{ end }}
+          <a href="{{ print "/" (index (split .RelPermalink "/") 1) }}" id="random-btn">Archive</a>
+          {{ if .NextInSection }}
+          <a href="{{ .NextInSection.RelPermalink }}">Next</a>
+          <a href="{{ range first 1 .CurrentSection.Pages }}{{ .RelPermalink }}{{ end }}">Today</a>
+          {{ else }}
+          <a class="disabled">Next</a><a class="disabled">Today</a>
+          {{ end }}
+          
+      </nav>
+    
+      <script>
+        //Set the Random link
+        var currentPageLink="{{ .RelPermalink }}";
+        {{ with .Site.GetPage (print "/" (index (split .RelPermalink "/") 1)) }}
+        var pages=[
+          {{ range .Pages }}
+            "{{ .RelPermalink }}"{{if .PrevInSection}},{{ end }}
+          {{ end }}
+          ];
+        {{ end }}
+        if(pages.length>1){
+          var randPages=pages.slice(0);
+          randPages.splice( randPages.indexOf(currentPageLink), 1 );
+          var randComicIndex=Math.floor(Math.random() * Math.floor(randPages.length));
+          document.getElementById("random-btn").setAttribute("href",randPages[randComicIndex])
+        }else{
+          document.getElementById("random-btn").classList.add("disabled");
+          document.getElementById("random-btn").removeAttribute("href")
+        }
+      </script>
+
+</div>
+<div class="content">
+      <div class="comic-body">
+
+        <div class="comic-meta">
+          <span class="meta-title">Date</span> {{ .Date.Format "Mon, Jan 2, 2006" }}<br>
+          {{ with .Params.tags }}
+              <span class="meta-title">Tag{{ if gt (len .) 1 }}s{{ end }}</span>
+              {{ range . }}
+                <a href="/tags/{{ replace (replace (lower .) " " "-") "'" ""}}" class="tag">{{ . }}</a>
+              {{ end }}
+            {{ end }}
+          <br>
+            <span class="meta-title">Share</span> <div class="addthis_inline_share_toolbox_8apt sharing" data-url="{{ .Permalink }}"></div>
+          
+        </div>
+
+        {{if .Content }}
+        <div class="comic-comment">
+          {{ .Content }}
+        </div>
+        {{ end }}
+      </div> 
+    </div>

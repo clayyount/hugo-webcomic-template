@@ -1,0 +1,31 @@
+<article>
+	
+	{{ if .Params.image  }}
+		{{ $page := . }}
+	{{ with $.Site.GetPage "page" "img/_index.md" }}
+	    {{ $imgPath := split $page.Params.image "/"}}
+	    {{ $img := index $imgPath 2 }}
+	    {{ with .Resources.GetMatch $img }}
+	        {{$img400 := .Resize "400x"}}
+	        <div class="image-holder">
+	        	<a href="{{ $page.RelPermalink }}">
+			        <img src="{{ $img400.RelPermalink }}" class="blog-thumbnail">
+			    </a>
+	        </div>
+	    {{ end }}
+	{{ end }}
+		{{ end }}
+	
+	<div class="text-holder">
+		<a href="{{ .RelPermalink }}"><h3 class="title">{{ .Title }}</h3></a>
+		<p class="date">{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
+		<p class="desc">
+			{{ if .Description }}
+			{{ .Description }}
+			{{ else }}
+			{{.Plain | safeHTML | truncate 300}}
+			{{ end}}
+		</p>
+		<a href="{{ .RelPermalink }}"><p>Read more →</p></a>
+	</div>
+</article>

@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+  {{ partial "head" . }}
+  <body class='{{ range first 2 (split .RelPermalink "/") }}{{.}}{{ end }}'>
+  	
+  	<div class="flex">
+	    {{ partial "nav" . }}
+	    {{ block "main" . }}{{ end }} 
+	    {{ partial "footer" . }} 
+	</div>
+  </body>
+</html>

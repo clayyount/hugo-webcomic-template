@@ -1,0 +1,66 @@
+<head>
+
+	<title>{{ .Title }}</title>
+
+	<!-- RSS link -->
+	{{ range .AlternativeOutputFormats -}}
+	    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+	{{ end -}}
+
+	<!-- Site CSS -->
+	{{ $style := resources.Get "scss/main.scss" | toCSS | minify }} 
+	<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto|Teko" rel="stylesheet">
+
+	<!-- Favicons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+
+	<!-- Twitter Card data -->
+	<!-- don't forget to change @clayyount to your twitter handle -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@clayyount">
+	<meta name="twitter:title" content="{{ .Title }}">
+	<meta name="twitter:description" content="{{ .Description }}">
+	<meta name="twitter:creator" content="@clayyount">
+	{{ if .Params.thumbnail }}
+	<meta name="twitter:image" content="{{ .Site.BaseURL }}{{.Params.thumbnail}}">
+	{{ else if .Params.image }}
+	<meta name="twitter:image" content="{{ .Site.BaseURL }}{{.Params.image}}">
+	{{ else }}
+	<meta name="twitter:image" content="{{ .Site.BaseURL }}img/android-chrome-192x192.png">
+	{{ end }}
+
+	<!-- Open Graph (Facebook) -->
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="{{ .Title }}">
+	<meta property="og:description" content="{{ .Description }}">
+	<meta property="og:url" content="{{ .Permalink }}">
+	{{ if .Params.thumbnail }}
+	<meta property="og:image"  content="{{ .Site.BaseURL }}{{.Params.thumbnail}}">
+	{{ else if .Params.image }}
+	<meta property="og:image"  content="{{ .Site.BaseURL }}{{.Params.image}}">
+	{{ else }}
+	<meta property="og:image" content="{{ .Site.BaseURL }}img/android-chrome-192x192.png">
+	{{ end }}
+
+	<!-- Fontawesome stylesheet -->
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	
+	<!-- JS Libraries -->
+
+	<script src="/js/jquery-3.3.1.min.js"></script>
+	<script src="/js/jquery.simplePagination.js"></script>
+	<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+	<!-- Replace with your own Addthis code -->
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=clayyount"></script>
+</head>

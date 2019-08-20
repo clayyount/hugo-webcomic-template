@@ -1,0 +1,22 @@
+{{ if gt .Paginator.TotalPages 1 }}
+<nav class="pagination"></nav>
+{{ end }}
+<script>
+$(document).ready(function(){
+
+    $(".pagination").pagination({
+        pages: {{ .Paginator.TotalPages }},
+        currentPage: {{ .Paginator.PageNumber }},
+        onPageClick: gotoPage,
+        prevText: "<",
+        nextText: ">",
+        displayedPages: 3,
+        edges:1
+    })
+
+    function gotoPage(num,e){
+        location = '/{{ index (split .Paginator.URL "/") 1}}/page/'+num;
+    }
+})
+</script>
+ 

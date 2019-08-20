@@ -1,0 +1,69 @@
+{{ define "main" }}
+<main>
+{{ with .Site.GetPage "/comic" }}
+    {{ range first 1 .Pages }}
+    	{{ partial "comic" . }}
+    {{ end }}
+{{ end }}
+<div class="content">
+	
+	<div class="flex">
+		<div class="flex-main">
+			<h2>Latest Blog Posts</h2>
+		{{ with .Site.GetPage "/blog" }}
+		<section class="blog-list">
+			{{ range first 5 .Pages }}
+				{{ .Render "li" }}
+			{{ end }}
+		</section>
+		{{ end }}
+		</div>
+		<div class="flex-side">
+			<h2>Search Comics</h2>
+			{{ with .Site.GetPage "/comic" }}
+				{{ partial "search" . }}
+			{{ end }}
+			{{ with .Site.GetPage "/comic" }}
+		      {{ range first 1 .Pages}}
+		        <h2 class="sidebar-title">Latest Comic</h2>
+		        <a href="{{ .RelPermalink }}">
+		        {{ if .Params.thumbnail }}
+		          <img src="{{ .Params.thumbnail }}" alt="{{ .Title }}" />
+		          {{ else }}
+		          <img src="{{ .Params.image }}" alt="{{ .Title }}" />
+		        {{ end }}
+		        </a>
+		      {{ end }}
+		    {{ end }}
+		</div>
+	</div>
+	<h2>Recent comics</h2>
+	<div class="flex">
+		{{ with .Site.GetPage "/comic" }}
+		    {{ range first 4 .Pages }}
+		    	<article class="grid-4">
+		    		<a href="{{ .RelPermalink }}">
+
+		    		{{ if .Params.thumbnail }}
+						<img src="{{ .Params.thumbnail }}" alt="{{ .Title }}" />
+						{{ else if .Params.image  }}
+						{{ $page := . }}
+					{{ with $.Site.GetPage "page" "img/_index.md" }}
+					    {{ $imgPath := split $page.Params.image "/"}}
+					    {{ $img := index $imgPath 2 }}
+					    {{ with .Resources.GetMatch $img }}
+					        {{$img400 := .Resize "400x"}}
+					        <img src="{{ $img400.RelPermalink }}" alt="{{ .Title }}">
+					    {{ end }}
+					{{ end }}
+						{{ end }}
+						<h3 style="margin:1rem 0px 2rem;">{{ .Title }}</h3>
+					</a>
+
+		    	</article>
+		    {{ end }}
+		{{ end }}
+	</div>
+</div>
+</main>
+{{ end }}

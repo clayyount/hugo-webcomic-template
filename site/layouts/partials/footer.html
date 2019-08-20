@@ -1,0 +1,34 @@
+<footer>
+	<div class="copyright">
+		&copy; {{ now.Format "2006"}} Your Name Here, all rights reserved.
+	</div>
+</footer>
+<script src="/app.js"></script>
+</body>
+<script>
+	document.getElementById("mobile-menu-btn").addEventListener("click", function(){
+		if(document.getElementsByTagName("html")[0].classList.contains("menu-open")){
+			document.getElementsByTagName("html")[0].classList.remove("menu-open");
+		}else{
+			document.getElementsByTagName("html")[0].classList.add("menu-open");
+		}
+	});
+	var dropdowns = document.getElementsByClassName("dropdown");
+	for(var i=0; i<dropdowns.length; i++){
+		dropdowns[i].addEventListener("click", function(){
+			if(this.classList.contains("open")){
+				this.classList.remove("open");
+			}else{
+
+				for(var j=0; j<dropdowns.length; j++){
+					dropdowns[j].classList.remove("open")
+				}
+				this.classList.add("open");
+
+			}
+		})
+	}
+</script>
+<!-- Add Google Tracking here -->
+
+</html>

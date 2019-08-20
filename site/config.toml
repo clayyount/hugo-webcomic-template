@@ -1,0 +1,10 @@
+baseURL = "https://clayyount.com/"
+languageCode = "en-us"
+title = "My Comic"
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+section = ["HTML", "RSS", "JSON"]
+page = ["HTML", "RSS", "JSON"]
+[permalinks]
+comic = "/:section/:year/:month/:day/:title/"
+blog = "/:section/:year/:month/:day/:title/"
