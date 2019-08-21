@@ -3,14 +3,14 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 import { translate } from 'react-polyglot';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { Notifs } from 'redux-notifications';
 import TopBarProgress from 'react-topbar-progress-indicator';
 import { loadConfig } from 'Actions/config';
 import { loginUser, logoutUser } from 'Actions/auth';
-import { currentBackend } from 'src/backend';
+import { currentBackend } from 'coreSrc/backend';
 import { createNewEntry } from 'Actions/collections';
 import { openMediaLibrary } from 'Actions/mediaLibrary';
 import MediaLibrary from 'MediaLibrary/MediaLibrary';
@@ -177,7 +177,14 @@ class App extends React.Component {
             <Redirect exact from="/" to={defaultPath} />
             <Redirect exact from="/search/" to={defaultPath} />
             {hasWorkflow ? <Route path="/workflow" component={Workflow} /> : null}
-            <Route exact path="/collections/:name" component={Collection} />
+            <Route
+              exact
+              path="/collections/:name"
+              render={props => {
+                const collectionExists = collections.get(props.match.params.name);
+                return collectionExists ? <Collection {...props} /> : <Redirect to={defaultPath} />;
+              }}
+            />
             <Route
               path="/collections/:name/new"
               render={props => <Editor {...props} newRecord />}

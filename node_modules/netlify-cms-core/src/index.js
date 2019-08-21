@@ -1,4 +1,8 @@
 import bootstrap from './bootstrap';
-import registry from 'Lib/registry';
+import Registry from 'Lib/registry';
 
-export { registry as default, bootstrap as init };
+export const NetlifyCmsCore = {
+  ...Registry,
+  init: bootstrap,
+};
+export default NetlifyCmsCore;

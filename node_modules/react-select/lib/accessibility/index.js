@@ -9,11 +9,12 @@ var instructionsAriaMessage = function instructionsAriaMessage(event) {
   var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var isSearchable = context.isSearchable,
       isMulti = context.isMulti,
-      label = context.label;
+      label = context.label,
+      isDisabled = context.isDisabled;
 
   switch (event) {
     case 'menu':
-      return 'Use Up and Down to choose options, press Enter to select the currently focused option, press Escape to exit the menu, press Tab to select the option and exit the menu.';
+      return "Use Up and Down to choose options".concat(isDisabled ? '' : ', press Enter to select the currently focused option', ", press Escape to exit the menu, press Tab to select the option and exit the menu.");
 
     case 'input':
       return "".concat(label ? label : 'Select', " is focused ").concat(isSearchable ? ',type to refine list' : '', ", press Down to open the menu, ").concat(isMulti ? ' press left to focus selected values' : '');
@@ -26,7 +27,8 @@ var instructionsAriaMessage = function instructionsAriaMessage(event) {
 exports.instructionsAriaMessage = instructionsAriaMessage;
 
 var valueEventAriaMessage = function valueEventAriaMessage(event, context) {
-  var value = context.value;
+  var value = context.value,
+      isDisabled = context.isDisabled;
   if (!value) return;
 
   switch (event) {
@@ -36,7 +38,7 @@ var valueEventAriaMessage = function valueEventAriaMessage(event, context) {
       return "option ".concat(value, ", deselected.");
 
     case 'select-option':
-      return "option ".concat(value, ", selected.");
+      return isDisabled ? "option ".concat(value, " is disabled. Select another option.") : "option ".concat(value, ", selected.");
   }
 };
 
@@ -55,7 +57,7 @@ var optionFocusAriaMessage = function optionFocusAriaMessage(_ref2) {
   var focusedOption = _ref2.focusedOption,
       getOptionLabel = _ref2.getOptionLabel,
       options = _ref2.options;
-  return "option ".concat(getOptionLabel(focusedOption), " focused, ").concat(options.indexOf(focusedOption) + 1, " of ").concat(options.length, ".");
+  return "option ".concat(getOptionLabel(focusedOption), " focused").concat(focusedOption.isDisabled ? ' disabled' : '', ", ").concat(options.indexOf(focusedOption) + 1, " of ").concat(options.length, ".");
 };
 
 exports.optionFocusAriaMessage = optionFocusAriaMessage;
