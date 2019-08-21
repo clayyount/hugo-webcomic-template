@@ -4,7 +4,7 @@ title = "My Comic"
 [outputs]
 home = ["HTML", "RSS", "JSON"]
 section = ["HTML", "RSS", "JSON"]
-page = ["HTML", "RSS", "JSON"]
+page = ["HTML", "RSS"]
 [permalinks]
 comic = "/:section/:year/:month/:day/:title/"
 blog = "/:section/:year/:month/:day/:title/"

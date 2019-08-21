@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" >
+  <channel>
+    <title>Blog on My Comic</title>
+    <link>https://clayyount.com/blog/</link>
+    <description>Recent content in Blog on My Comic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 May 2015 15:07:11 +0000</lastBuildDate>
+    
+    <atom:link href="https://clayyount.com/blog/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+    
+    <item>
+      <title>Example Post 1</title>
+      <description><![CDATA[ <a href="https://clayyount.com/blog/2015/05/26/example-post-1/"><img src="https://clayyount.com//img/blog-header-image.jpg" /></a><br>This is a test post.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.]]>
+      </description>
+      <content:encoded><![CDATA[ <a href="https://clayyount.com/blog/2015/05/26/example-post-1/"><img src="https://clayyount.com//img/blog-header-image.jpg" /></a><br>This is a test post.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.]]>
+      </content:encoded>
+      <link>https://clayyount.com/blog/2015/05/26/example-post-1/</link>
+      <pubDate>Tue, 26 May 2015 15:07:11 +0000</pubDate>
+      
+      <guid>https://clayyount.com/blog/2015/05/26/example-post-1/</guid>
+    </item>
+    
+    <item>
+      <title>Example Post 2</title>
+      <description><![CDATA[ <a href="https://clayyount.com/blog/2014/06/23/example-post-2/"><img src="https://clayyount.com//img/blog-header-image.jpg" /></a><br>This is a second test post.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.]]>
+      </description>
+      <content:encoded><![CDATA[ <a href="https://clayyount.com/blog/2014/06/23/example-post-2/"><img src="https://clayyount.com//img/blog-header-image.jpg" /></a><br>This is a second test post.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.]]>
+      </content:encoded>
+      <link>https://clayyount.com/blog/2014/06/23/example-post-2/</link>
+      <pubDate>Mon, 23 Jun 2014 13:25:26 +0000</pubDate>
+      
+      <guid>https://clayyount.com/blog/2014/06/23/example-post-2/</guid>
+    </item>
+    
+  </channel>
+</rss>
