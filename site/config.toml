@@ -1,4 +1,4 @@
-baseURL = "https://clayyount.com/"
+baseURL = "/"
 languageCode = "en-us"
 title = "My Comic"
 [outputs]
